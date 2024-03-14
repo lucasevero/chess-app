@@ -2,7 +2,7 @@ require "test_helper"
 require_relative "seed_test"
 
 class PawnTest < SeedTest
-  # Paws#moving_squares
+  # Pawn#moving_squares
   test "Pawn#moving_squares should include two squares if the pawn is in the initial square" do
 
     assert_equal @@pawn_b2.moving_squares, ['b3', 'b4']
@@ -11,6 +11,11 @@ class PawnTest < SeedTest
   test "Pawn#moving_squares should not include two squares if the pawn is not in the initial square" do
 
     assert_not_includes @@pawn_d4.moving_squares, 'd6'
+  end
+
+  test "Pawn#moving_squares should be empty if the next square is occupied" do
+
+    assert_equal @@pawn_e4.moving_squares, []
   end
 
   # Pawn#controlling_squares

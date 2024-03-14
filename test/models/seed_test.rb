@@ -33,8 +33,33 @@ class SeedTest < ActiveSupport::TestCase
         9, 0, 0, 0, 0, 0, -1, 0, 0, 9,
         9, 0, 0, 0, 0, 1, 0, 0, 0, 9,
         9, 0, 0, 0, 0, 0, -2, 0, 0, 9,
-        9, -1, -1, -1, 0, -1, -1, -1, -1, 9,
+        9, -1, -1, -1, -1, 0, -1, -1, -1, 9,
         9, -4, -2, -3, -5, -6, -3, 0, -4, 9,
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9
+      ]
+    ".gsub(/\s/, ""),
+    finished: false,
+    white: @@luca,
+    black: @@cleo,
+    moves: "",
+    winner: "",
+    next_to_move: ""
+  )
+
+  @@giuoco_piano = Board.new(
+    board_state: "
+      [
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+        9, 4, 2, 3, 5, 6, 0, 0, 4, 9,
+        9, 1, 1, 1, 1, 0, 1, 1, 1, 9,
+        9, 0, 0, 0, 0, 0, 2, 0, 0, 9,
+        9, 0, 0, 3, 0, 1, 0, 0, 0, 9,
+        9, 0, 0, -3, 0, -1, 0, 0, 0, 9,
+        9, 0, 0, -2, 0, 0, 0, 0, 0, 9,
+        9, -1, -1, -1, -1, 0, -1, -1, -1, 9,
+        9, -4, 0, -3, -5, -6, 0, -2, -4, 9,
         9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
         9, 9, 9, 9, 9, 9, 9, 9, 9, 9
       ]
@@ -70,5 +95,30 @@ class SeedTest < ActiveSupport::TestCase
     board: @@vienna_gambit_accepted,
     color: "White",
     square: "e5"
+  )
+
+  @@pawn_e4 = Pawn.new(
+    board: @@giuoco_piano,
+    color: "White",
+    square: "e4"
+  )
+
+  # Knights
+  @@knight_f6 = Knight.new(
+    board: @@vienna_gambit_accepted,
+    color: "Black",
+    square: "f6"
+  )
+
+  @@knight_f3 = Knight.new(
+    board: @@giuoco_piano,
+    color: "White",
+    square: "f3"
+  )
+
+  @@knight_b1 = Knight.new(
+    board: @@initial_state,
+    color: "White",
+    square: "b1"
   )
 end
