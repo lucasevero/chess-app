@@ -4,15 +4,33 @@ class Piece < Tableless
   validates :color, inclusion: { in: COLORS }
 
   def initialize(attr = {})
-    @color = attr[:color]
-    @pinned = attr[:pinned]
     @board = attr[:board]
+    @color = attr[:color]
+    @square = attr[:square]
+    @pinned = attr[:pinned] || false
   end
 
+  attr_accessor :board, :square, :pinned
   attr_reader :color
 
   def pinned?
     @pinned
+  end
+
+  def get_square_index(name)
+    Board::BOARD_INDEXES.key(name)
+  end
+
+  def get_square_name(index)
+    Board::BOARD_INDEXES[index]
+  end
+
+  def get_square_names(indexes)
+    indexes.map { |index| get_square_name index }
+  end
+
+  def get_square_indexes(names)
+    names.map { |name| get_square_index name }
   end
 
   def to_chess_notation(info = {})

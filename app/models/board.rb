@@ -1,8 +1,8 @@
 class Board < ApplicationRecord
-  belongs_to :white, optional: true, class_name: :users
-  belongs_to :black, optional: true, class_name: :users
+  belongs_to :white, optional: true, class_name: "User", foreign_key: "white_id"
+  belongs_to :black, optional: true, class_name: "User", foreign_key: "black_id"
 
-  SQUARE_INDEXES = {
+  BOARD_INDEXES = {
     21 => "a1",
     22 => "b1",
     23 => "c1",
@@ -75,4 +75,12 @@ class Board < ApplicationRecord
     97 => "g8",
     98 => "h8"
   }
+
+  def board_string
+    board_state.to_s
+  end
+
+  def board_array
+    JSON.parse(board_string)
+  end
 end
