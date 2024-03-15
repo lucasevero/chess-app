@@ -72,6 +72,31 @@ class SeedTest < ActiveSupport::TestCase
     next_to_move: ""
   )
 
+  @@vienna_copycat_variation = Board.new(
+    board_state: "
+      [
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+        9, 4, 0, 3, 0, 6, 0, 0, 4, 9,
+        9, 1, 1, 1, 1, 0, -5, 1, 1, 9,
+        9, 0, 0, 0, 0, 0, 0, 0, -2, 9,
+        9, 0, 0, 3, 0, 1, 0, 5, 0, 9,
+        9, 0, 0, -3, 2, -1, 0, 0, 0, 9,
+        9, 0, 0, -2, 0, 0, 0, 0, 0, 9,
+        9, -1, -1, -1, -1, 0, -1, -1, -1, 9,
+        9, -4, 0, -3, 0, -6, 0, 0, -4, 9,
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9,
+        9, 9, 9, 9, 9, 9, 9, 9, 9, 9
+      ]
+    ".gsub(/\s/, ""),
+    finished: false,
+    white: @@luca,
+    black: @@cleo,
+    moves: "",
+    winner: "",
+    next_to_move: ""
+  )
+
   # Pawns
   @@pawn_b2 = Pawn.new(
     board: @@initial_state,
@@ -121,4 +146,31 @@ class SeedTest < ActiveSupport::TestCase
     color: "White",
     square: "b1"
   )
+
+  @@knight_h3 = Knight.new(
+    board: @@vienna_copycat_variation,
+    color: "White",
+    square: "h3"
+  )
+
+  # Bishops
+  @@bishop_c1 = Bishop.new(
+    board: @@initial_state,
+    color: "White",
+    square: "c1"
+  )
+
+  @@bishop_c4 = Bishop.new(
+    board: @@giuoco_piano,
+    color: "White",
+    square: "c4"
+  )
+
+  @@bishop_c5 = Bishop.new(
+    board: @@giuoco_piano,
+    color: "Black",
+    square: "c5"
+  )
+
+
 end

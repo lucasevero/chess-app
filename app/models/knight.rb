@@ -10,13 +10,11 @@ class Knight < Piece
     board_state = board.board_array
     current_index = get_square_index(square)
 
-    own_piece_method = color == "White" ? :positive? : :negative?
-
     moving_squares_indexes = []
 
     constants.each do |constant|
       index = current_index + constant
-      unless board_state[index].send(own_piece_method)
+      unless board_state[index].send(own_pieces_method) || board_state[index] == 9
         moving_squares_indexes << index
       end
     end
