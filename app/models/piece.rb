@@ -8,10 +8,11 @@ class Piece < Tableless
     @color = attr[:color]
     @square = attr[:square]
     @pinned = attr[:pinned] || false
+    @own_pieces_method = @color == "White" ? :positive? : :negative?
   end
 
   attr_accessor :board, :square, :pinned
-  attr_reader :color
+  attr_reader :color, :own_pieces_method
 
   def pinned?
     @pinned
